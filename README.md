@@ -23,6 +23,23 @@ describe('λ compose', function() {
     assert.strictEqual(f(g(x)), compose(f, g)(x))
   })
 })
+
+describe.run(function(runner) {
+  runner.on('success', function(test) { console.log('[OK]', test.title()) })
+
+  runner.on('failure', function(test) { console.log('[ERROR]', test.title())
+                                        console.log(test.exception) })
+
+  runner.on('ignored', function(test){ console.log('[?]', test.title()) })
+  
+  runner.on('complete', function(report) {
+    console.log('')
+    console.log(report.passed.length, ' tests passed')
+    console.log(report.failed.length, ' tests failed')
+    console.log(report.ignored.length, ' tests ignored')
+    console.log(report.all.length, ' tests ran')
+  })
+})
 ```
 
 > B-But I already use Mocha! I don't want to convert all my tests to Buddy, man.
