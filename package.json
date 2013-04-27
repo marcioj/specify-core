@@ -1,0 +1,18 @@
+{
+  "name": "buddy",
+  "version": "0.1.0",
+  "description": "Minimal BDD test runner that plays along nicely with Browserify.",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/killdream/buddy.git"
+  },
+  "author": "Quildreen \"Sorella\" Motta <quildreen@gmail.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "calliope": {
+    "output": "docs/api",
+    "copyright": "© 2013 Quildreen \"Sorella\" Motta",
+    "packages": [{ "files": [ "src/*.js" ] }]
+  }
+}
