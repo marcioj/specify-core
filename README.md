@@ -27,9 +27,8 @@ describe('λ compose', function() {
 
 > B-But I already use Mocha! I don't want to convert all my tests to Buddy, man.
 
-Well, no worries, we've got you covered*.
-
-\* As long as you use BDD.
+Well, no worries, we've got you covered. As long as you use the BDD interface,
+all your tests will Just Work™.
 
 Note that, however, Buddy uses Promises all the way down, so `done` is just a
 convenience to fulfill the promise with a value, which can also be achieved by
