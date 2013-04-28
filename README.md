@@ -3,14 +3,6 @@
 Minimal BDD test runner that plays along nicely with Browserify.
 
 
-## Platform support
-
-This library assumes an ES5 environment, but can be easily supported in ES3
-platforms by the use of shims. Just include [es5-shim][] :3
-
-[![browser support](http://ci.testling.com/killdream/buddy.png)](http://ci.testling.com/killdream/buddy)
-
-
 ## Example
 
 ```js
@@ -64,6 +56,29 @@ A quick reference of the API can be built using [Calliope][]:
 
     $ npm install -g calliope
     $ calliope build
+
+
+## Tests
+
+On Node:
+
+    $ npm test
+    
+On the browser:
+
+    $ npm run pretest-browser
+    # Then open `test/browser/index.html` in any browser.
+
+## Platform support
+
+This library assumes an ES5 environment, but can be easily supported in ES3
+platforms by the use of shims. Just include [es5-shim][] :3
+
+Testling CI tests will fail right now because of
+https://github.com/substack/testling/pull/34, but it works in the browser, you
+can test it by running the browser test cases.
+
+[![browser support](http://ci.testling.com/killdream/buddy.png)](http://ci.testling.com/killdream/buddy)
 
 
 ## Licence
