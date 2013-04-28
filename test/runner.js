@@ -6,6 +6,10 @@ var spec = require('../')()
 
 require('./test')(spec)
 
+function log() {
+  console.log([].join.call(arguments, ' '))
+}
+
 function verdict(result) {
   return result.verdict == 'success'? '[OK]  '
   :      result.verdict == 'failure'? '[FAIL]'
@@ -38,30 +42,30 @@ function describeFailure(ex) {
          ].join('\n')
 }
 
-console.log('TAP version 13')
+log('TAP version 13')
 spec.run(function(report) {
   var i = 0;
 
   report.on('success', function(ev, result) {
-    console.log('ok', ++i, fullTitle(result.test))
+    log('ok', ++i, fullTitle(result.test))
   })
 
   report.on('failure', function(ev, result) {
-    console.log('not ok', ++i, fullTitle(result.test))
-    console.log(describeFailure(result.exception))
+    log('not ok', ++i, fullTitle(result.test))
+    log(describeFailure(result.exception))
   })
 
   report.on('ignored', function(ev, result) {
-    console.log('# ignored:', fullTitle(result.test))
+    log('# ignored:', fullTitle(result.test))
   })
 
   report.on('done', function(ev, results) {
-    console.log('')
-    console.log('1..' + i)
-    console.log('# tests', i)
-    console.log('# pass', results.passed.length)
-    console.log('# fail', results.failed.length)
-    console.log('# ignored', results.ignored.length)
+    log('')
+    log('1..' + i)
+    log('# tests', i)
+    log('# pass', results.passed.length)
+    log('# fail', results.failed.length)
+    log('# ignored', results.ignored.length)
 
     if (results.failed.length && typeof process != 'undefined')
       process.exit(1)
