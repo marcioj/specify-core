@@ -15,10 +15,9 @@ platforms by the use of shims. Just include [es5-shim][] :3
 
 ```js
 var describe = require('buddy')()
-var it       = describe.it
 var assert   = require('assert')
 
-describe('λ compose', function() {
+describe('λ compose', function(it) {
   it('compose(f, g)(x) should be the same as f(g(x))', function() {
     assert.strictEqual(f(g(x)), compose(f, g)(x))
   })
@@ -45,7 +44,7 @@ describe.run(function(runner) {
 > B-But I already use Mocha! I don't want to convert all my tests to Buddy, man.
 
 Well, no worries, we've got you covered. As long as you use the BDD interface,
-all your tests will Just Work™.
+all your tests will mostly Just Work™.
 
 Note that, however, Buddy uses Promises all the way down, so `done` is just a
 convenience to fulfill the promise with a value, which can also be achieved by
