@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/killdream/buddy.git"
+    "url": "git://github.com/buddyjs/buddy.git"
   },
   "scripts": {
     "pretest-browser": "$(npm bin)/browserify -e test/runner.js -o test/browser/bundle.js",

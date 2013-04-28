@@ -1,4 +1,4 @@
-# Buddy [![Build Status](https://travis-ci.org/killdream/buddy.png)](https://travis-ci.org/killdream/buddy)  ![Dependencies Status](https://david-dm.org/killdream/buddy.png)
+# Buddy [![Build Status](https://travis-ci.org/buddyjs/buddy.png)](https://travis-ci.org/buddyjs/buddy)  ![Dependencies Status](https://david-dm.org/buddyjs/buddy.png)
 
 Minimal BDD test runner that plays along nicely with Browserify.
 
@@ -47,7 +47,7 @@ just returning something that ain't no Promise.
 
 Just grab it from NPM:
 
-    $ npm install buddy
+    $ npm install test-buddy
 
 
 ## Documentation
@@ -78,7 +78,7 @@ Testling CI tests will fail right now because of
 https://github.com/substack/testling/pull/34, but it works in the browser, you
 can test it by running the browser test cases.
 
-[![browser support](http://ci.testling.com/killdream/buddy.png)](http://ci.testling.com/killdream/buddy)
+[![browser support](http://ci.testling.com/buddyjs/buddy.png)](http://ci.testling.com/buddyjs/buddy)
 
 
 ## Licence
