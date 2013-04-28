@@ -92,5 +92,25 @@ module.exports = function(spec) {
         return expect(t1.run()).to.eventually.have.property('verdict', 'ignored')
       })
     })
+
+    spec('fullTitle()', function(it) {
+      it('Should return a list of name components.', function() {
+        var s1 = Suite.make(null, 'a')
+        var s2 = Suite.make(s1, 'b')
+        var s3 = Suite.make(s2, 'c')
+        var t1 = Test.make(s3, 'd')
+
+        expect(t1.fullTitle()).to.deep.equal(['a', 'b', 'c', 'd'])
+      })
+
+      it('Should skip objects with no name.', function() {
+        var s1 = Suite.make(null)
+        var s2 = Suite.make(s1, 'a')
+        var s3 = Suite.make(s2, '')
+        var t1 = Test.make(s3, 'b')
+
+        expect(t1.fullTitle()).to.deep.equal(['a', 'b'])
+      })
+    })
   })
 }
