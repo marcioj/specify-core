@@ -42,5 +42,8 @@
       "iphone/6",
       "ipad/6"
     ]
+  },
+  "devDependencies": {
+    "es5-shim": "~2.0.8"
   }
 }
