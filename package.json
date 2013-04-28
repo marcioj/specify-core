@@ -8,6 +8,7 @@
     "url": "git://github.com/killdream/buddy.git"
   },
   "scripts": {
+    "pretest-browser": "$(npm bin)/browserify -e test/runner.js -o test/browser/bundle.js",
     "test": "node ./test/runner"
   },
   "author": "Quildreen \"Sorella\" Motta <quildreen@gmail.com>",

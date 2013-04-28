@@ -16,4 +16,4 @@ npm-debug.log
 node_modules
 docs/api
 .calliope
-test/browser/suite-bundle.js
+test/browser/bundle.js
