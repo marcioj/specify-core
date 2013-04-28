@@ -1,5 +1,5 @@
 {
-  "name": "buddy",
+  "name": "test-buddy",
   "version": "0.1.0",
   "description": "Minimal BDD test runner that plays along nicely with Browserify.",
   "main": "./lib/index.js",
