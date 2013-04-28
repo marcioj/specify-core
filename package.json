@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
-    "es5-shim": "~2.0.8"
+    "es5-shim": "~2.0.8",
+    "chai-as-promised": "~3.3.0"
   }
 }
