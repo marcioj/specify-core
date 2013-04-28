@@ -13,6 +13,18 @@
   "calliope": {
     "output": "docs/api",
     "copyright": "© 2013 Quildreen \"Sorella\" Motta",
-    "packages": [{ "files": [ "src/*.js" ] }]
+    "packages": [
+      {
+        "files": [
+          "src/*.js"
+        ]
+      }
+    ]
+  },
+  "dependencies": {
+    "ekho": "~0.3.0",
+    "boo": "~1.2.4",
+    "pinky-combinators": "~0.1.1",
+    "pinky": "~0.1.2"
   }
 }
