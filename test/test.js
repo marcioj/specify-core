@@ -10,7 +10,7 @@ module.exports = function(spec) {
 
   return spec('{} Test'
 , function(it, spec) {
-    spec('λ init()', function(it) {
+    spec('init()', function(it) {
       it('Given a Suite, should add the test to that Suite.', function() {
         var s1 = Suite.make()
         var t1 = Test.make(s1)
@@ -33,7 +33,7 @@ module.exports = function(spec) {
       })
     })
 
-    spec('λ run()', function(it) {
+    spec('run()', function(it) {
       it('Should always return a promise.', function() {
         var t1 = Test.make(null, null, function(){ })
         return expect(t1.run().then).to.be.a('function')
