@@ -38,6 +38,7 @@ function describeFailure(ex) {
          ].join('\n')
 }
 
+console.log('TAP version 13')
 spec.run(function(report) {
   var i = 0;
 
