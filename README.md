@@ -24,14 +24,14 @@ describe('λ compose', function(it) {
 })
 
 describe.run(function(runner) {
-  runner.on('success', function(test) { console.log('[OK]', test.title()) })
+  runner.on('success', function(ev, test) { console.log('[OK]', test.title()) })
 
-  runner.on('failure', function(test) { console.log('[ERROR]', test.title())
+  runner.on('failure', function(ev, test) { console.log('[ERROR]', test.title())
                                         console.log(test.exception) })
 
-  runner.on('ignored', function(test){ console.log('[?]', test.title()) })
+  runner.on('ignored', function(ev, test){ console.log('[?]', test.title()) })
   
-  runner.on('complete', function(report) {
+  runner.on('done', function(ev, report) {
     console.log('')
     console.log(report.passed.length, ' tests passed')
     console.log(report.failed.length, ' tests failed')
