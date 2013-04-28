@@ -5,9 +5,9 @@ module.exports = function(spec) {
   var Test  = require('../lib/test').Test
   var Suite = require('../lib/suite').Suite
 
-  return spec('{} Test'
+  return spec('Test'
 , function(it, spec) {
-    spec('λ init', function(it) {
+    spec('init()', function(it) {
       it('Given a Suite, should add the test to that Suite.', function() {
         var s1 = Suite.make()
         var t1 = Test.make(s1)
