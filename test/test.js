@@ -93,7 +93,7 @@ module.exports = function(spec) {
       })
     })
 
-    spec('fullTitle()', function(it) {
+    spec('fullTitle(s)', function(it) {
       it('Should return a list of name components.', function() {
         var s1 = Suite.make(null, 'a')
         var s2 = Suite.make(s1, 'b')
@@ -110,6 +110,37 @@ module.exports = function(spec) {
         var t1 = Test.make(s3, 'b')
 
         expect(t1.fullTitle()).to.deep.equal(['a', 'b'])
+      })
+    })
+
+    spec('setEnabled(f)', function(it) {
+      it('Should define a new condition for running the test.', function() {
+        var t = Test.make()
+        t.setEnabled(function(){ return false })
+
+        return expect(t.run()).to.eventually.have.property('verdict', 'ignored')
+      })
+    })
+
+    spec('setTimeout(n)', function(it) {
+      it('Should define a new timeout for running the test.', function() {
+        var p = pinky()
+        var t = Test.make(null, null, function(){ return p })
+        t.setTimeout(100)
+        setTimeout(p.fulfill, 200)
+
+        return expect(t.run()).to.eventually.have.property('verdict', 'failure')
+      })
+    })
+
+    spec('setSlow(n)', function(it) {
+      it('Should define a new slow threshold.', function() {
+        var p = pinky()
+        var t = Test.make(null, null, function(){ return p })
+        t.setSlow(100)
+        setTimeout(p.fulfill, 200)
+
+        return expect(t.run()).to.eventually.have.property('slow', true)
       })
     })
   })
