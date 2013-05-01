@@ -4,8 +4,9 @@ require('es5-shim/es5-sham')
 
 var spec = require('../')()
 
-require('./test')(spec)
-require('./suite')(spec)
+require('./specs/test')(spec)
+require('./specs/suite')(spec)
+require('./specs/runner')(spec)
 
 function log() {
   console.log([].join.call(arguments, ' '))

@@ -6,8 +6,8 @@ module.exports = function(spec) {
   var pinky = require('pinky')
   var all   = require('pinky-combinators').all
 
-  var Test = require('../lib/test').Test
-  var Suite = require('../lib/suite').Suite
+  var Test = require('../../lib/test').Test
+  var Suite = require('../../lib/suite').Suite
 
   var protoOf = Object.getPrototypeOf
 

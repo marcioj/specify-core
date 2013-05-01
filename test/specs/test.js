@@ -5,8 +5,8 @@ module.exports = function(spec) {
 
   var pinky = require('pinky')
 
-  var Test  = require('../lib/test').Test
-  var Suite = require('../lib/suite').Suite
+  var Test  = require('../../lib/test').Test
+  var Suite = require('../../lib/suite').Suite
 
   return spec('{} Test'
 , function(it, spec) {
