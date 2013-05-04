@@ -1,6 +1,6 @@
 {
   "name": "test-buddy",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Minimal BDD test runner that plays along nicely with Browserify.",
   "main": "./lib/index.js",
   "repository": {
