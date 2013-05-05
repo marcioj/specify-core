@@ -8,8 +8,8 @@
     "url": "git://github.com/buddyjs/buddy.git"
   },
   "scripts": {
-    "pretest-browser": "$(npm bin)/browserify -e test/runner.js -o test/browser/bundle.js",
-    "test": "node ./test/runner"
+    "test": "node ./test/tap",
+    "test-browser": "$(npm bin)/buddy-browser serve ./test/browser"
   },
   "author": "Quildreen \"Sorella\" Motta <quildreen@gmail.com>",
   "license": "MIT",
@@ -46,6 +46,10 @@
   },
   "devDependencies": {
     "es5-shim": "~2.0.8",
-    "chai-as-promised": "~3.3.0"
+    "chai-as-promised": "~3.3.0",
+    "buddy-tap": "~0.1.0",
+    "buddy-browser": "~0.1.1",
+    "doom-nwmatcher": "~0.1.0",
+    "doom-bean": "~0.1.0"
   }
 }

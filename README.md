@@ -42,6 +42,7 @@ A quick reference of the API can be built using [Calliope][]:
 
 A lengthy, narrated documentation is available [On the wiki][]
 
+[Calliope]: https://github.com/killdream/calliope
 [On the wiki]: https://github.com/buddyjs/buddy/wiki
 
 
@@ -53,8 +54,8 @@ On Node:
     
 On the browser:
 
-    $ npm run pretest-browser
-    # Then open `test/browser/index.html` in any browser.
+    $ npm run test-browser
+    # Then open the link on any browser
 
 
 ## Platform support
@@ -68,10 +69,9 @@ can test it by running the browser test cases.
 
 [![browser support](http://ci.testling.com/buddyjs/buddy.png)](http://ci.testling.com/buddyjs/buddy)
 
+[es5-shim]: https://github.com/kriskowal/es5-shim
 
 ## Licence
 
 MIT/X11. ie.: do whatever you want.
 
-[Calliope]: https://github.com/killdream/calliope
-[es5-shim]: https://github.com/kriskowal/es5-shim
