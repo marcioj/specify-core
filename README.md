@@ -6,41 +6,24 @@ Minimal BDD test runner that plays along nicely with Browserify.
 ## Example
 
 ```js
-var describe = require('buddy')()
-var assert   = require('assert')
+var spec   = require('buddy')()
+var assert = require('assert')
 
-describe('λ compose', function(it) {
+spec('λ compose', function(it) {
   it('compose(f, g)(x) should be the same as f(g(x))', function() {
     assert.strictEqual(f(g(x)), compose(f, g)(x))
   })
 })
 
-describe.run(function(runner) {
-  runner.on('success', function(ev, test) { console.log('[OK]', test.title()) })
-
-  runner.on('failure', function(ev, test) { console.log('[ERROR]', test.title())
-                                        console.log(test.exception) })
-
-  runner.on('ignored', function(ev, test){ console.log('[?]', test.title()) })
-  
-  runner.on('done', function(ev, report) {
-    console.log('')
-    console.log(report.passed.length, ' tests passed')
-    console.log(report.failed.length, ' tests failed')
-    console.log(report.ignored.length, ' tests ignored')
-    console.log(report.all.length, ' tests ran')
-  })
-})
+spec.run(require('buddy-minimal')())
 ```
 
-> B-But I already use Mocha! I don't want to convert all my tests to Buddy, man.
+Then:
 
-Well, no worries, we've got you covered. As long as you use the BDD interface,
-all your tests will mostly Just Work™.
-
-Note that, however, Buddy uses Promises all the way down, so `done` is just a
-convenience to fulfill the promise with a value, which can also be achieved by
-just returning something that ain't no Promise.
+```bash
+$ node run test.js
+Success. 1/1 tests.
+```
 
 
 ## Installing
@@ -57,6 +40,10 @@ A quick reference of the API can be built using [Calliope][]:
     $ npm install -g calliope
     $ calliope build
 
+A lengthy, narrated documentation is available [On the wiki][]
+
+[On the wiki]: https://github.com/buddyjs/buddy/wiki
+
 
 ## Tests
 
@@ -68,6 +55,7 @@ On the browser:
 
     $ npm run pretest-browser
     # Then open `test/browser/index.html` in any browser.
+
 
 ## Platform support
 
