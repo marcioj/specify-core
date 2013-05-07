@@ -63,11 +63,7 @@ On the browser:
 This library assumes an ES5 environment, but can be easily supported in ES3
 platforms by the use of shims. Just include [es5-shim][] :3
 
-Testling CI tests will fail right now because of
-https://github.com/substack/testling/pull/34, but it works in the browser, you
-can test it by running the browser test cases.
-
-[![browser support](http://ci.testling.com/buddyjs/buddy.png)](http://ci.testling.com/buddyjs/buddy)
+[![browser support](https://ci.testling.com/buddyjs/buddy.png)](http://ci.testling.com/buddyjs/buddy)
 
 [es5-shim]: https://github.com/kriskowal/es5-shim
 
