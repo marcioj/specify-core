@@ -1,6 +1,6 @@
 {
   "name": "test-buddy",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Minimal BDD test runner that plays along nicely with Browserify.",
   "main": "./lib/index.js",
   "repository": {
@@ -32,7 +32,7 @@
     "pinky": "~0.1.2"
   },
   "testling": {
-    "files": "test/runner.js",
+    "files": "test/tap.js",
     "browsers": [
       "ie/6..latest",
       "chrome/20..latest",
