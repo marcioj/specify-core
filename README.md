@@ -1,4 +1,4 @@
-# Buddy [![Build Status](https://travis-ci.org/buddyjs/buddy.png)](https://travis-ci.org/buddyjs/buddy)  ![Dependencies Status](https://david-dm.org/buddyjs/buddy.png)
+# Brofist [![Build Status](https://travis-ci.org/brofistjs/brofist.png)](https://travis-ci.org/brofistjs/brofist)  ![Dependencies Status](https://david-dm.org/brofistjs/brofist.png)
 
 Minimal BDD test runner that plays along nicely with Browserify.
 
@@ -6,7 +6,7 @@ Minimal BDD test runner that plays along nicely with Browserify.
 ## Example
 
 ```js
-var spec   = require('buddy')()
+var spec   = require('brofist')()
 var assert = require('assert')
 
 spec('λ compose', function(it) {
@@ -15,7 +15,7 @@ spec('λ compose', function(it) {
   })
 })
 
-spec.run(require('buddy-minimal')())
+spec.run(require('brofist-minimal')())
 ```
 
 Then:
@@ -30,7 +30,7 @@ Success. 1/1 tests.
 
 Just grab it from NPM:
 
-    $ npm install test-buddy
+    $ npm install brofist
 
 
 ## Documentation
@@ -43,7 +43,7 @@ A quick reference of the API can be built using [Calliope][]:
 A lengthy, narrated documentation is available [On the wiki][]
 
 [Calliope]: https://github.com/killdream/calliope
-[On the wiki]: https://github.com/buddyjs/buddy/wiki
+[On the wiki]: https://github.com/brofistjs/brofist/wiki
 
 
 ## Tests
@@ -63,7 +63,7 @@ On the browser:
 This library assumes an ES5 environment, but can be easily supported in ES3
 platforms by the use of shims. Just include [es5-shim][] :3
 
-[![browser support](https://ci.testling.com/buddyjs/buddy.png)](http://ci.testling.com/buddyjs/buddy)
+[![browser support](https://ci.testling.com/brofistjs/brofist.png)](http://ci.testling.com/brofistjs/brofist)
 
 [es5-shim]: https://github.com/kriskowal/es5-shim
 

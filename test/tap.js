@@ -2,6 +2,6 @@
 require('es5-shim')
 require('es5-shim/es5-sham')
 
-var buddy = require('../')
+var brofist = require('../')
 
-buddy.run(require('./specs'), require('buddy-tap')())
+brofist.run(require('./specs'), require('brofist-tap')())

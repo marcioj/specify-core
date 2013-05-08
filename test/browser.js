@@ -7,6 +7,6 @@ var beanB = require('doom-bean')
 var nwmatcherB = require('doom-nwmatcher')
 
 // Run all these stuff
-var buddy = require('../')
-buddy.run( require('./specs')
-         , require('buddy-browser')(nwmatcherB, beanB))
+var brofist = require('../')
+brofist.run( require('./specs')
+           , require('brofist-browser')(nwmatcherB, beanB))
