@@ -54,7 +54,8 @@ On Node:
     
 On the browser:
 
-    $ npm run test-browser
+    $ npm install -g brofist-browser
+    $ brofist-browser serve test/specs/index.js
     # Then open the link on any browser
 
 
