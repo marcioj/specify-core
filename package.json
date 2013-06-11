@@ -1,6 +1,6 @@
 {
   "name": "brofist",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Minimal BDD test runner that plays along nicely with Browserify.",
   "main": "./lib/index.js",
   "repository": {
@@ -25,8 +25,8 @@
     ]
   },
   "dependencies": {
-    "ekho": "~0.3.0",
-    "boo": "~1.2.4",
+    "ekho": "~0.4.0",
+    "boo": "~2.0.0",
     "pinky-combinators": "~0.1.1",
     "pinky": "~0.1.2"
   },
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "chai": "~1.6.0",
-    "es5-shim": "~2.0.8",
+    "es5-shim": "~2.1.0",
     "chai-as-promised": "git://github.com/killdream/chai-as-promised.git#master",
     "brofist-tap": "~0.1.0"
   }
