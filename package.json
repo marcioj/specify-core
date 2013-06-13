@@ -28,8 +28,7 @@
     "boo": "~2.0.0",
     "pinky-combinators": "~0.1.1",
     "pinky": "~0.1.2",
-    "shoutout": "~1.0.0",
-    "brofist-tap": "~0.2.0"
+    "shoutout": "~1.0.0"
   },
   "testling": {
     "files": "test/tap.js",
@@ -47,6 +46,6 @@
     "chai": "~1.6.0",
     "es5-shim": "~2.1.0",
     "chai-as-promised": "git://github.com/killdream/chai-as-promised.git#master",
-    "brofist-tap": "~0.1.0"
+    "brofist-tap": "~0.2.0"
   }
 }
