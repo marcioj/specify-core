@@ -1,6 +1,6 @@
 {
   "name": "brofist",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Minimal BDD test runner that plays along nicely with Browserify.",
   "main": "./lib/index.js",
   "repository": {
