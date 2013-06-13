@@ -29,7 +29,7 @@ module.exports =  spec('λ run()', function(it, spec) {
 
   it('Should take a reporter function.', function() {
     var p = pinky()
-    run([], function(report) { report.on('done', p.fulfill) })
+    run([], function(report) { report.signals.done.add(p.fulfill) })
 
     return expect(p).to.be.fulfilled
   })
@@ -41,7 +41,7 @@ module.exports =  spec('λ run()', function(it, spec) {
       var t1 = Test.make(null, null, function(){ a.push(1) })
       var t2 = Test.make(null, null, function(){ a.push(2) })
       run([t1, t2], function(report){
-        report.on('done', function(){ p.fulfill(a) })
+        report.signals.done.add(function(){ p.fulfill(a) })
       })
 
       return expect(p).to.become([1, 2])
@@ -54,7 +54,7 @@ module.exports =  spec('λ run()', function(it, spec) {
       var t3 = Test.make(null, null, null, { enabled: function(){ return false }})
 
       var p2 = run([t1, t2, t3], function(report) {
-                 report.on('result', function(ev, r) {
+                 report.signals.result.add(function(r) {
                    a.push(r.verdict)
                  })
                })
