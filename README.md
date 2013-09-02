@@ -1,9 +1,9 @@
 Brofist
 =======
 
+[![unstable](http://hughsk.github.io/stability-badges/dist/unstable.svg)](http://github.com/hughsk/stability-badges)
 [![Build Status](https://travis-ci.org/brofistjs/brofist.png)](https://travis-ci.org/brofistjs/brofist)
 ![Dependencies Status](https://david-dm.org/brofistjs/brofist.png)
-[![unstable](http://hughsk.github.io/stability-badges/dist/unstable.svg)](http://github.com/hughsk/stability-badges)
 
 
 Minimal BDD test runner that plays along nicely with Browserify.
