@@ -1,0 +1,7 @@
+{:title "Hi-Five"
+ :description "Minimal BDD test runner that plays along nicely with Browserify."
+ :layout "index.html"
+ :links [{:text "View on Github"
+          :url  "http://github.com/hifivejs/hifive"}
+         {:text "Issues"
+          :url  "http://github.com/hifivejs/hifive/issues"}]}
