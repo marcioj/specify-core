@@ -8,7 +8,7 @@
     "url": "git://github.com/hifivejs/hifive.git"
   },
   "scripts": {
-    "test": "node ./test/tap"
+    "test": "make test"
   },
   "author": "Quildreen \"Sorella\" Motta <quildreen@gmail.com>",
   "license": "MIT",
