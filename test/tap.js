@@ -4,4 +4,4 @@ require('es5-shim/es5-sham')
 
 var brofist = require('../')
 
-brofist.run(require('./specs'), require('brofist-tap')())
+brofist.run(require('./specs'), require('hifive-tap')())
