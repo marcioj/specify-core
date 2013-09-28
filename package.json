@@ -1,11 +1,11 @@
 {
-  "name": "brofist",
-  "version": "0.3.1",
-  "description": "Minimal BDD test runner that plays along nicely with Browserify.",
+  "name": "hifive",
+  "version": "0.1.0",
+  "description": "Your friendly minimal BDD library.",
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/brofistjs/brofist.git"
+    "url": "git://github.com/hifivejs/hifive.git"
   },
   "scripts": {
     "test": "node ./test/tap"
@@ -13,17 +13,6 @@
   "author": "Quildreen \"Sorella\" Motta <quildreen@gmail.com>",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "calliope": {
-    "output": "docs/api",
-    "copyright": "© 2013 Quildreen \"Sorella\" Motta",
-    "packages": [
-      {
-        "files": [
-          "src/*.js"
-        ]
-      }
-    ]
-  },
   "dependencies": {
     "boo": "~2.0.0",
     "pinky-combinators": "~0.1.1",
