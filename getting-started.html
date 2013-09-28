@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width" name="viewport" />
+
+  <title>Hi-Five</title>
+
+  <!-- Flatdoc -->
+  <script src="static/vendor/jquery.js"></script>
+  <script src="static/vendor/flatdoc-0.8.0-legacy.js"></script>
+  <script src="static/vendor/flatdoc-0.8.0.js"></script>
+  <script src="static/scripts/type.writer.js"></script>
+
+  <!-- Flatdoc theme -->
+  <link rel="stylesheet" href="static/vendor/styles/theme-white.css" />
+  <script src="static/vendor/theme-white.js"></script>
+
+  <!-- Meta -->
+  <meta property="og:title" content="Hi-Five" />
+  <meta name="description" content="Your Project description goes here." />
+</head>
+<body role="flatdoc">
+
+  <div class="header">
+    <div class="left">
+      <h1><a class="tw-title" href="index.html">Hi-Five</a></h1>
+      <ul class="tw-navigation">
+        <li class="tw-item"><a class="tw-link" href="http://github.com/hifivejs/hifive">View on Github</a></li><li class="tw-item"><a class="tw-link" href="http://github.com/hifivejs/hifive/issues">Issues</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content-root">
+    <div class="menubar">
+      <div role="flatdoc-menu" class="menu section"></div>
+    </div>
+    <div class="content" role="flatdoc-content"></div>
+  </div>
+
+  <script class="tw-source" type="x-text/markdown">Getting Started
+===============
+
+Getting started with Hi-Five is really simple, since the library is designed to
+stay out of your way and just let you do the testing.
+
+
+## 1) Install Hi-Five
+
+First things first, you should install Hi-Five in your project. You can easily
+do so using NPM:
+
+```bash
+$ npm install --save-dev hifive
+```
+
+## 2) Write some test specs
+
+Once you've got the dependencies out of your way, you can start writing your
+tests. Unlike most other test frameworks, Hi-Five chooses to work with "test
+cases as values". Because of this, the better way to write tests is to have a
+separate module for each high-level specification, and have them export the
+specification object:
+
+```js
+var spec   = require('hifive')()
+var assert = require('assert')
+
+module.exports = spec('Array', function(it, topic) {
+  topic('concat()', function(it) {
+    it('Should return a new Array.', function() {
+      var a = [1, 2, 3]
+      assert.notEqual(a, a.concat([])
+    })
+    
+    it('Should return an Array containing elements from both arrays.', function() {
+      var a = [1, 2, 3], b = [4, 5]
+      assert.deepEqual([1, 2, 3, 4, 5], a.concat(b))
+    })
+  })
+})
+```
+
+## 3) Run the tests through a reporter
+
+Once you've finished writing your specs, you should define a runner and a
+reporter. There are some reporters to choose from. Let's go with the
+[minimal][] reporter for now:
+
+[minimal]: https://github.com/hifivejs/hifive-minimal
+
+```bash
+$ npm install --save-dev hifive-minimal
+```
+
+So you just specify which test cases you want to run:
+
+```js
+// Get a reference to Hi-Five
+var hifive = require('hifive')
+
+// then pass your specs to the runner (and a reporter!)
+hifive.run( [ require('./your-spec') ]
+          , require('hifive-minimal')())
+
+// You can also run specs directly:
+// require('./your-spec').run(require('hifive-minimal')())
+```
+
+And you get the verdict!
+
+```bash
+$ node your-runner.js
+Success. 2/2 tests.
+```
+</script>
+  <script>TypeWriter.initialise()</script>
+
+</body>
+
+</html>
