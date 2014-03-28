@@ -10,9 +10,11 @@ bundle:
 	mkdir -p dist
 	$(bin)/browserify lib/index.js --standalone hifive > dist/hifive.umd.js
 
-documentation:
+api-documentation:
+	$(bin)/jsdoc --configure jsdoc.conf.json	
+
+documentation: api-documentation
 	cd docs/manual && typewriter build
-	$(bin)/jsdoc --configure jsdoc.conf.json
 	cp -r docs/api docs/manual/build
 
 clean:
