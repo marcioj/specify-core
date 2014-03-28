@@ -17,3 +17,4 @@ node_modules
 docs/api
 .calliope
 test/browser/bundle.js
+docs/api
