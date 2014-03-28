@@ -104,9 +104,10 @@ can use the `title` and `fullTitle` properties just fine!
 ### `suite.finished :: ([Result], Suite)`
 
 Emitted after a collection of tests has finished running. Since suites are just
-collections of tests, Buddy will give you an Array with all the tests that are
-under that `Suite` (directly or indirectly). If you need to compute the overall
-success/failure/time of the Suite, you'll need to fold over the `Result` list.
+collections of tests, Hi-Five will give you an Array with all the tests that
+are under that `Suite` (directly or indirectly). If you need to compute the
+overall success/failure/time of the Suite, you'll need to fold over the
+`Result` list.
 
 For example, if you want to check if all tests passed:
 
@@ -119,7 +120,7 @@ report.signals.suite.finished(function(results) {
 ```
 
 For a real-world example, you can take a look at the
-[buddy-browser](https://github.com/hifivejs/hifive-browser/blob/master/lib/index.js#L57-L73)
+[hifive-browser](https://github.com/hifivejs/hifive-browser/blob/master/lib/index.js#L175-L186)
 code.
 
 ### `result :: (Result)`

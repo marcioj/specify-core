@@ -26,9 +26,9 @@ reporter:
 ```
 
 ```js
-var buddy = require('hifive')
+var hifive = require('hifive')
 
-buddy.run(yourSpecList, require('hifive-tap')())
+hifive.run(yourSpecList, require('hifive-tap')())
 ```
 
 ## 2) Enable Testling for your project

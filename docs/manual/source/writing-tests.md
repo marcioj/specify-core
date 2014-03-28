@@ -54,7 +54,7 @@ spec 'Array' ->
 
 ## Synchronous tests
 
-Synchronous tests are pretty straight forward, Buddy will work with anything
+Synchronous tests are pretty straight forward, Hi-Five will work with anything
 that can throw an error in case of failures — this means you can bring-your-own
 assertion library. Node's assert, Chai, should.js? They all get some love!
 
@@ -120,7 +120,7 @@ spec('delay(n)', function(it) {
                  else          promise.reject()
                })
 
-    // And don't forget to return the promise back to Buddy!
+    // And don't forget to return the promise back to Hi-Five!
     return promise
   })
 })
@@ -163,7 +163,7 @@ spec('Array', function(it) {
   }).disable()
 })
 
-spec.run(require('buddy-minimal')())
+spec.run(require('hifive-minimal')())
 // => Success. 0/0 tests. (1 ignored)
 ```
 
@@ -240,9 +240,9 @@ And in the runner, you define how you want to run these specs:
 
 ```js
 // runner.js
-var buddy = require('hifive')
+var hifive = require('hifive')
 
-buddy.run([
+hifive.run([
   require('./specs/user.js')
 , require('./specs/post.js')
 , ...
