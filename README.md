@@ -84,7 +84,7 @@ This will generate the documentation as a series of HTML files on
 `docs/build`.
 
 [type.writer]: http://kurisuwhyte.github.io/type.writer
-[docs]: https://hifivejs.github.io/
+[docs]: https://hifivejs.github.io/hifive
 
 
 ## Tests
