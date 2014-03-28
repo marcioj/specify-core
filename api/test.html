@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Hi-Five Module: lib/test</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top ">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">Hi-Five</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="index_.html">lib/index</a>
+						</li>
+						
+						<li>
+							<a href="runner.html">lib/runner</a>
+						</li>
+						
+						<li>
+							<a href="suite.html">lib/suite</a>
+						</li>
+						
+						<li>
+							<a href="test.html">lib/test</a>
+						</li>
+						
+						<li>
+							<a href="utils.html">lib/utils</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="runner-Report.html">Report</a>
+						</li>
+						
+						<li>
+							<a href="suite-Suite.html">Suite</a>
+						</li>
+						
+						<li>
+							<a href="test-Test.html">Test</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="runner-Report.html#event:done">done</a>
+						</li>
+						
+						<li>
+							<a href="runner-Report.html#event:failure">failure</a>
+						</li>
+						
+						<li>
+							<a href="runner-Report.html#event:ignored">ignored</a>
+						</li>
+						
+						<li>
+							<a href="runner-Report.html#event:result">result</a>
+						</li>
+						
+						<li>
+							<a href="runner-Report.html#event:success">success</a>
+						</li>
+						
+						<li>
+							<a href="runner-Report.html#event:suite.finished">suite.finished</a>
+						</li>
+						
+						<li>
+							<a href="runner-Report.html#event:suite.started">suite.started</a>
+						</li>
+						
+						<li>
+							<a href="runner-Report.html#event:test.finished">test.finished</a>
+						</li>
+						
+						<li>
+							<a href="runner-Report.html#event:test.started">test.started</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+		<div class="span8">
+			
+				<div id="main">
+					
+
+
+	<h1 class="page-title">Module: lib/test</h1>
+<section>
+
+<header>
+    <h2>
+    lib/test
+    </h2>
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+
+    
+        
+            <div class="description"><p>Provides a representation of a single test.</p></div>
+        
+
+        
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="test-Test.html">Test</a></dt>
+            <dd>boo.Base <| Test
+implements: (Runnable Result), Test {
+   parent  : Suite | Void
+   title   : String
+   test    : Void → Promise[α]
+   slow    : Number
+   timeout : Number
+}</dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="captureLogs"><span class="type-signature">&lt;inner> </span>captureLogs<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Void → Void → [LogEntry]</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Captures things being output in <code>console.log</code>.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-203">line 203</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="fail"><span class="type-signature">&lt;inner> </span>fail<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">(Test, started:Date, finished:Date, [LogEntry], Error) → Result</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Constructs a result for failed tests.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-168">line 168</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="ignore"><span class="type-signature">&lt;inner> </span>ignore<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Test → Result</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Constructs a result for a test that didn't run.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-179">line 179</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="isSlow"><span class="type-signature">&lt;inner> </span>isSlow<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">(Test, started:Date, finished:Date) → Boolean</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Checks if a test should be considered slow.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-135">line 135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="makeLogEntry"><span class="type-signature">&lt;inner> </span>makeLogEntry<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Any... → LogEntry</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Constructs a log entry for something being logged.</p>
+<p>Log contents are not restricted to just textual data, but their
+output representation depends exclusively on the reporter being used
+to display the test results.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-193">line 193</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="makeResult"><span class="type-signature">&lt;inner> </span>makeResult<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">(Test, started:Date, finished:Date) → Result</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Constructs an object of the Result type.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-144">line 144</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="success"><span class="type-signature">&lt;inner> </span>success<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">(Test, started:Date, finished:Date, [LogEntry]) → Result</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Constructs a result for successful tests.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-158">line 158</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        <dl>
+                
+<dt>
+    <h4 class="name" id="LogEntry">LogEntry</h4>
+    
+    
+    <p class="summary">{ date: Date       --^ When the entry was created
+, data: [Any]      --^ Whatever was logged
+}</p>
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Represents things logged while running a test.</p>
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <h4 class="name" id="Result">Result</h4>
+    
+    
+    <p class="summary">{ verdict   : Verdict      --^ The verdict about the test
+, started   : Date         --^ When it started
+, finished  : Date         --^ When it finished
+, exception : Error        --^ The exception thrown (if any)
+, slow      : Boolean      --^ Was it slower than the threshold?
+, test      : Test         --^ The test that we ran
+, log       : [LogEntry]   --^ All information logged on console.log
+}</p>
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The result of running a test.</p>
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-65">line 65</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <h4 class="name" id="Runnable">Runnable</h4>
+    
+    
+    <p class="summary">{ run : (Reporter, Report) -> Promise[α] }</p>
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The type of all things we can run.</p>
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-116">line 116</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <h4 class="name" id="Test">Test</h4>
+    
+    
+    <p class="summary">Test < TestMeta {
+  -- | Yields all the components of the Test's title.
+  fullTitle : @TestMeta => Void -> [String]
+}</p>
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Represents a single test</p>
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-101">line 101</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <h4 class="name" id="TestMeta">TestMeta</h4>
+    
+    
+    <p class="summary">{ title   : String             --^ The name of the test
+, test    : Void -> Promise[α] --^ The test code
+, timeout : Number             --^ How long to wait for async (ms)
+, slow    : Number             --^ What to consider slow (ms)
+, enabled : Test -> Boolean    --^ Should we run this at all?
+}</p>
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Meta information about a test.</p>
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-84">line 84</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <h4 class="name" id="Verdict">Verdict</h4>
+    
+    
+    <p class="summary">'success' | 'failure' | 'ignored'</p>
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The verdict of running a test.</p>
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="test.js.html">test.js</a>, <a href="test.js.html#sunlight-1-line-41">line 41</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+            </dl>
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		© 2014 Quildreen Motta
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a>
+		on Fri Mar 28 2014 16:14:54 GMT-0300 (BRT) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+			    anchorName  : function(i, heading, prefix) {
+					return $(heading).attr("id") || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+		} );
+	</script>
+
+	
+
+</body>
+</html>
