@@ -19,7 +19,9 @@
     "pinky": "~0.1.2",
     "shoutout": "~1.0.0",
     "prelude-ls": "~1.0.3",
-    "data.future": "~1.0.0"
+    "data.future": "^2.0.0",
+    "control.monads": "^0.3.1",
+    "control.async": "^0.1.1"
   },
   "testling": {
     "files": "test/tap.js",
