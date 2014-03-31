@@ -2,7 +2,7 @@ Hi-Five
 =======
 
 [![Build Status](https://travis-ci.org/hifivejs/hifive.png)](https://travis-ci.org/hifivejs/hifive)
-[![Dependencies Status](https://david-dm.org/hifivejs/hifive.png)](https://david-dm.org/hifivejs/hifive.png)
+[![Dependencies Status](https://david-dm.org/hifivejs/hifive.png)](https://david-dm.org/hifivejs/hifive)
 [![NPM version](https://badge.fury.io/js/hifive.png)](http://badge.fury.io/js/hifive)
 [![unstable](http://hughsk.github.io/stability-badges/dist/unstable.svg)](http://github.com/hughsk/stability-badges)
 
