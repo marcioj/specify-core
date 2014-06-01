@@ -45,10 +45,11 @@ $(LIB_DIR)/%.js: $(SRC_DIR)/%.sjs
 
 $(TEST_BLD)/%.js: $(TEST_DIR)/%.sjs
 	mkdir -p $(dir $@)
-	$(sjs) --readable-names        \
-	       --module alright/macros \
-	       --module ./macros       \
-	       --output $@             \
+	$(sjs) --readable-names                \
+	       --module alright/macros         \
+	       --module alright/macros/futures \
+	       --module ./macros               \
+	       --output $@                     \
 	       $<
 
 
