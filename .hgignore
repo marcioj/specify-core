@@ -5,6 +5,7 @@ dist
 npm-debug.log
 docs
 lib
+test/specs
 
 # Usual Emacs backup stuff
 *~
