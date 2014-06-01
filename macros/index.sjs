@@ -1,6 +1,6 @@
 macro $hifive__load {
-  rule { ... } => {
-    typeof module !== 'undefined' && typeof require !== 'undefined'?  require('./lib')
+  rule { } => {
+    typeof module !== 'undefined' && typeof require !== 'undefined'?  require('hifive')
     :                                                                 window.hifive
   }
 }
