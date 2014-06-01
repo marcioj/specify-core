@@ -1,6 +1,6 @@
 {
   "name": "hifive",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Minimal BDD test runner that plays along nicely with Browserify.",
   "main": "./lib/index.js",
   "scripts": {

@@ -135,5 +135,5 @@ Released under the [MIT licence](https://github.com/hifivejs/hifive/blob/master/
 [es5-shim]: https://github.com/kriskowal/es5-shim
 [docs]: http://hifivejs.github.io/hifive
 <!-- [release: https://github.com/hifivejs/hifive/releases/download/v$VERSION/hifive-$VERSION.tar.gz] -->
-[release]: https://github.com/hifivejs/hifive/releases/download/v0.0.0/hifive-0.0.0.tar.gz
+[release]: https://github.com/hifivejs/hifive/releases/download/v0.2.0/hifive-0.2.0.tar.gz
 <!-- [/release] -->
