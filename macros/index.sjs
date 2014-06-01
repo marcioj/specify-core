@@ -5,24 +5,6 @@ macro $hifive__load {
   }
 }
 
-macro $hifive__returnLast {
-  rule { { $a } } => {
-    return $a;
-  }
-
-  rule { { $a ; $b } } => {
-    $a;
-    return $b;
-  }
-
-  rule { { $a ; $b (;) ... } } => {
-    $a;
-    $hifive__returnLast { $b ... }
-  }
-
-  rule { {} } => { }
-}
-
 macro spec {
   rule { $title { $a ... } } => {
     (function(hifive) {
@@ -70,13 +52,13 @@ macro $hifive__definition {
     $hifive__definition $scope { $b ... }
   }
 
-  rule { $scope { async $title { $test:expr ... } $a ... } } => {
+  rule { $scope { async $title { $test ... } $a ... } } => {
     $scope.tests.push($scope.hifive.Test.Case.create({
       name: $title,
       timeout: new $scope.hifive._Maybe.Nothing(),
       slow: new $scope.hifive._Maybe.Nothing(),
       enabled: new $scope.hifive._Maybe.Nothing(),
-      test: function(){ $hifive__returnLast { $test ... } }()
+      test: function(){ $test ... }()
     }));
 
 
@@ -119,7 +101,7 @@ macro $hifive__definition {
 
   rule { $scope { beforeAll { $a ... } $b ... } } => {
     $scope.beforeAll.push(function(){
-      $hifive__returnLast { $a ... }
+      $a ...
     }());
 
     $hifive__definition $scope { $b ... }
@@ -127,7 +109,7 @@ macro $hifive__definition {
 
   rule { $scope { beforeEach { $a ... } $b ... } } => {
     $scope.beforeEach.push(function(){
-      $hifive__returnLast { $a ... }
+      $a ...
     }());
 
     $hifive__definition $scope { $b ... }
@@ -135,7 +117,7 @@ macro $hifive__definition {
   
   rule { $scope { afterAll { $a ... } $b ... } } => {
     $scope.afterAll.push(function(){
-      $hifive__returnLast { $a ... }
+      $a ...
     }());
 
     $hifive__definition $scope { $b ... }
@@ -143,7 +125,7 @@ macro $hifive__definition {
 
   rule { $scope { afterEach { $a ... } $b ... } } => {
     $scope.afterEach.push(function(){
-      $hifive__returnLast { $a ... }
+      $a ...
     }());
 
     $hifive__definition $scope { $b ... }
