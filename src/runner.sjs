@@ -31,7 +31,6 @@ var rx     = require('rx');
 var adt    = require('adt-simple');
 var curry  = require('core.lambda').curry;
 var Report = require('./report').Report
-var Signal = require('./core').Signal
 
 
 // -- Helpers ----------------------------------------------------------
@@ -41,11 +40,10 @@ var Signal = require('./core').Signal
  *
  * @summary Signal → Report → Report
  */
-function assimilateResult(report, signal) { return match signal {
-  Signal.TestResult(x) => report.add(x),
-  Signal.Started(_)    => report,
-  Signal.Finished(_)   => report
-}}
+function assimilateResult(report, signal) {
+  return signal.isTestResult?  report.add(signal.value)
+  :                            report
+}
 
 
 // -- Configuration ----------------------------------------------------
@@ -90,7 +88,7 @@ var defaultConfig = Config.create({
  * @summary 
  * Config
  * → [Test]
- * → (Rx.Observable[α, Signal] → Void)
+ * → (Rx.Observable[α, Signal], Rx.Observable[α, Report] → Void)
  * → Future[Error, Report]
  */
 run = curry(3, run)
@@ -98,12 +96,12 @@ function run(config, suites, reporter) { return new Future(function(reject, reso
   var stream = suites.map(λ[#.run([], config)])
                      .reduce(λ[# +++ #], rx.Observable.empty())
                      .publish();
-
-  reporter(stream);
-  stream.reduce(assimilateResult, Report.empty())
-        .subscribe( function onValue(report){ resolve(report) }
-                  , function onError(error) { reject(error) }
-                  , function onCompleted() { console.log('-->', arguments) });
+  var reportStream = stream.reduce(assimilateResult, Report.empty());
+  
+  reporter(stream, reportStream);
+  reportStream.subscribe( function onValue(report){ resolve(report) }
+                        , function onError(error) { reject(error) }
+                        , function onCompleted() { });
 
   stream.connect();
 
@@ -113,7 +111,6 @@ function run(config, suites, reporter) { return new Future(function(reject, reso
 // -- Exports ----------------------------------------------------------
 module.exports = { run             : run
                  , runWithDefaults : run(defaultConfig)
-                 , Report          : Report
                  , Config          : Config
                  , defaultConfig   : defaultConfig
                  }
