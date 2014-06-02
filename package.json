@@ -28,12 +28,14 @@
     "core.lambda": "^1.0.0",
     "data.future": "^2.1.1",
     "data.maybe": "^1.0.3",
+    "hifive-tap": "^0.2.0",
     "rx": "^2.2.24"
   },
   "devDependencies": {
     "adt-simple": "^0.1.3",
     "alright": "^1.0.0",
     "browserify": "^3.33.0",
+    "es5-shim": "^3.4.0",
     "hifive-tap": "^0.1.0",
     "ink-docstrap": "git://github.com/robotlolita/docstrap",
     "jsdoc": "^3.3.0-alpha5",
