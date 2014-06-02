@@ -34,5 +34,4 @@ module.exports = [ require('./core')
                  , require('./runner')
                  , require('./report')
                  , require('./result')
-                 , { bdd: require('./interfaces/bdd') }
                  ].reduce(extend, {})
