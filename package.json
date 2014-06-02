@@ -29,7 +29,8 @@
     "data.future": "^2.1.1",
     "data.maybe": "^1.0.3",
     "hifive-tap": "^0.2.0",
-    "rx": "^2.2.24"
+    "rx": "^2.2.24",
+    "xtend": "^3.0.0"
   },
   "devDependencies": {
     "adt-simple": "^0.1.3",
