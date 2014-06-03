@@ -48,6 +48,7 @@ $(TEST_BLD)/%.js: $(TEST_DIR)/%.sjs
 	$(sjs) --readable-names                \
 	       --module alright/macros         \
 	       --module alright/macros/futures \
+	       --module lambda-chop/macros     \
 	       --module ./macros               \
 	       --output $@                     \
 	       $<

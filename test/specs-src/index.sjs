@@ -20,5 +20,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 module.exports = [
-  require('./report')
+  require('./core')
+, require('./report')
 ]

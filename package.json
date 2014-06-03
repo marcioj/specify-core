@@ -24,7 +24,7 @@
   "dependencies": {
     "adt-simple": "^0.1.3",
     "control.async": "^0.3.1",
-    "control.monads": "^0.5.0",
+    "control.monads": "^0.5.1",
     "core.lambda": "^1.0.0",
     "data.future": "^2.1.1",
     "data.maybe": "^1.0.3",
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "alright": "^1.0.0",
+    "assertion-error": "^1.0.0",
     "browserify": "^3.33.0",
     "es5-shim": "^3.4.0",
     "hifive-tap": "^0.2.0",
