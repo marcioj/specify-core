@@ -205,16 +205,18 @@ Case::run = function(path, config) {
 };
 
 Suite::run = function(path, config) {
-  return this.beforeAll.run()
+  return rx.Observable.return(Started(this))
+     +++ this.beforeAll.run()
      +++ this.tests.map(execute.bind(this))
                     .reduce(λ(a, b) -> a +++ b, rx.Observable.empty())
-     +++ this.afterAll.run();
+     +++ this.afterAll.run()
+     +++ rx.Observable.return(Finished(this));
 
   function execute(test) {
     return this.beforeEach.run()
-       +++ rx.Observable.return(Started(test))
+       +++ (test.isCase? rx.Observable.return(Started(test)) : rx.Observable.empty())
        +++ test.run(path.concat([this.name]), config)
-       +++ rx.Observable.return(Finished(test))
+       +++ (test.isCase? rx.Observable.return(Finished(test)) : rx.Observable.empty())
        +++ this.afterEach.run() }
 };
 
