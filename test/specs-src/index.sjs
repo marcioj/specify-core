@@ -22,4 +22,5 @@
 module.exports = [
   require('./core')
 , require('./report')
+, require('./result')
 ]

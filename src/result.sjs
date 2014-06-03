@@ -59,7 +59,7 @@ Duration::isSlow = function() {
 /**
  * The total time of this duration in milliseconds.
  *
- * @summary @Duration => Void → Number
+ * @summary @Duration => Void → &lt;Number/ms&gt;
  */
 Duration::time = function() {
   return this.finished - this.started;
