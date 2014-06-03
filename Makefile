@@ -1,23 +1,96 @@
-bin := $(shell npm bin)
+bin        = $(shell npm bin)
+sjs        = $(bin)/sjs
+browserify = $(bin)/browserify
+jsdoc      = $(bin)/jsdoc
+uglify     = $(bin)/uglifyjs
+VERSION    = $(shell node -e 'console.log(require("./package.json").version)')
 
-test:
-	node ./test/tap
+# -- Configuration -----------------------------------------------------
+PACKGE   = NAME
+EXPORTS  = EXPORTS
 
-test-browser:
-	hifive-browser serve test/specs/index.js
+LIB_DIR  = lib
+SRC_DIR  = src
+SRC      = $(wildcard $(SRC_DIR)/*.sjs $(SRC_DIR)/**/*.sjs)
+TGT      = ${SRC:$(SRC_DIR)/%.sjs=$(LIB_DIR)/%.js}
 
-bundle:
-	mkdir -p dist
-	$(bin)/browserify lib/index.js --standalone hifive > dist/hifive.umd.js
+TEST_DIR = test/specs-src
+TEST_BLD = test/specs
+TEST_SRC = $(wildcard $(TEST_DIR)/*.sjs)
+TEST_TGT = ${TEST_SRC:$(TEST_DIR)/%.sjs=$(TEST_BLD)/%.js}
 
-api-documentation:
-	$(bin)/jsdoc --configure jsdoc.conf.json	
 
-documentation: api-documentation
-	cd docs/manual && typewriter build
-	cp -r docs/api docs/manual/build
+# -- Compilation -------------------------------------------------------
+dist:
+	mkdir -p $@
+
+dist/$(PACKAGE).umd.js: $(LIB_DIR)/index.js dist
+	$(browserify) $< --standalone $(EXPORTS) > $@
+
+dist/$(PACKAGE).umd.min.js: dist/$(PACKAGE).umd.js
+	$(uglify) --mangle - < $< > $@
+
+$(LIB_DIR)/%.js: $(SRC_DIR)/%.sjs
+	mkdir -p $(dir $@)
+	cat node_modules/macros.operators/macros/*.sjs $< > $(LIB_DIR)/tmp.sjs
+	$(sjs) --readable-names            \
+	       --module adt-simple/macros  \
+	       --module sparkler/macros    \
+	       --module lambda-chop/macros \
+	       --sourcemap                 \
+	       --output $@                 \
+	       $(LIB_DIR)/tmp.sjs
+	rm $(LIB_DIR)/tmp.sjs
+
+
+$(TEST_BLD)/%.js: $(TEST_DIR)/%.sjs
+	mkdir -p $(dir $@)
+	$(sjs) --readable-names                \
+	       --module alright/macros         \
+	       --module alright/macros/futures \
+	       --module lambda-chop/macros     \
+	       --module ./macros               \
+	       --output $@                     \
+	       $<
+
+
+# -- Tasks -------------------------------------------------------------
+all: $(TGT)
+
+bundle: dist/$(PACKAGE).umd.js
+
+minify: dist/$(PACKAGE).umd.min.js
+
+documentation: $(TGT)
+	$(jsdoc) --configure jsdoc.conf.json
 
 clean:
-	rm -rf dist
+	rm -rf dist build $(LIB_DIR)
 
-.PHONY: test
+test: $(TGT) $(TEST_TGT)
+	node test/run
+
+package: documentation bundle minify
+	mkdir -p dist/$(PACKAGE)-$(VERSION)
+	cp -r docs dist/$(PACKAGE)-$(VERSION)
+	cp -r lib dist/$(PACKAGE)-$(VERSION)
+	cp dist/*.js dist/$(PACKAGE)-$(VERSION)
+	cp package.json dist/$(PACKAGE)-$(VERSION)
+	cp README.md dist/$(PACKAGE)-$(VERSION)
+	cp LICENCE dist/$(PACKAGE)-$(VERSION)
+	cd dist && tar -czf $(PACKAGE)-$(VERSION).tar.gz $(PACKAGE)-$(VERSION)
+
+publish: clean
+	npm install
+	npm publish
+
+bump:
+	node tools/bump-version.js $$VERSION_BUMP
+
+bump-feature:
+	VERSION_BUMP=FEATURE $(MAKE) bump
+
+bump-major:
+	VERSION_BUMP=MAJOR $(MAKE) bump
+
+.PHONY: test bump bump-feature bump-major publish package clean documentation
