@@ -104,7 +104,6 @@ function run(config, suites, reporter) { return new Future(function(reject, reso
                         , function onCompleted() { });
 
   stream.connect();
-
 })}
 
 
