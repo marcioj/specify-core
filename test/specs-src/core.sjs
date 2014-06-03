@@ -175,8 +175,8 @@ module.exports = spec 'Core' {
         s2.run([], cfg)
           .reduce(function(acc, x) {
             return x.cata({
-              Started: λ(x) -> acc.concat([['s', x.name]]),
-              Finished: λ(x) -> acc.concat([['f', x.name]]),
+              Started: λ(_) -> acc.concat([['s', x.fullTitle()]]),
+              Finished: λ(_) -> acc.concat([['f', x.fullTitle()]]),
               TestResult: λ(x) -> x.cata({
                 Success: λ(_) -> acc.concat([['rs', x.fullTitle()]]),
                 Failure: λ(_) -> acc.concat([['rf', x.fullTitle()]]),
@@ -186,13 +186,13 @@ module.exports = spec 'Core' {
           }, []).subscribe(function(v) {
             _.equal(v
                    ,[['s','B']
-                     ,['s','a'],['rs','B a'],['f','a']
-                     ,['s','A']
-                      ,['s','a'],['rs','B A a'],['f','a']
-                      ,['s','d'],['ri','B A d'],['f','d']
-                      ,['s','c'],['rs','B A c'],['f','c']
-                     ,['f','A']
-                     ,['s','b'],['rf','B b'],['f','b']
+                     ,['s','B a'],['rs','B a'],['f','B a']
+                     ,['s','B A']
+                      ,['s','B A a'],['rs','B A a'],['f','B A a']
+                      ,['s','B A d'],['ri','B A d'],['f','B A d']
+                      ,['s','B A c'],['rs','B A c'],['f','B A c']
+                     ,['f','B A']
+                     ,['s','B b'],['rf','B b'],['f','B b']
                     ,['f','B']])
               .fold(reject, function() {
                 _.equal( ax

@@ -116,14 +116,31 @@ Hook::run = function() {
  * @class
  * @summary
  * | TestResult: { value: Result }
- * | Started:    { value: Test }
- * | Finished:   { value: Test }
+ * | Started:    { value: Test, path: Array[String] }
+ * | Finished:   { value: Test, path: Array[String] }
  */
 union Signal {
-  TestResult { value: Result },
-  Started { value: Test },
-  Finished { value: Test }
+  Started  { value: Test
+           , path: Array
+           },
+  Finished { value: Test
+           , path: Array
+           },
+  TestResult { value: Result }
 } deriving (adt.Base, adt.Cata)
+
+/**
+ * Returns the full path of a Signal.
+ *
+ * @summary @Signal => Void → String
+ */
+Signal::fullTitle = function() {
+  return this.path.concat([this.value.name]).join(' ');
+}
+TestResult::fullTitle = function() {
+  return this.value.fullTitle();
+}
+
 
 
 // -- Tests ------------------------------------------------------------
@@ -205,18 +222,22 @@ Case::run = function(path, config) {
 };
 
 Suite::run = function(path, config) {
-  return rx.Observable.return(Started(this))
+  var thisPath = path.concat([this.name])
+  
+  return rx.Observable.return(Started(this, path))
      +++ this.beforeAll.run()
      +++ this.tests.map(execute.bind(this))
                     .reduce(λ(a, b) -> a +++ b, rx.Observable.empty())
      +++ this.afterAll.run()
-     +++ rx.Observable.return(Finished(this));
+     +++ rx.Observable.return(Finished(this, path));
 
   function execute(test) {
     return this.beforeEach.run()
-       +++ (test.isCase? rx.Observable.return(Started(test)) : rx.Observable.empty())
-       +++ test.run(path.concat([this.name]), config)
-       +++ (test.isCase? rx.Observable.return(Finished(test)) : rx.Observable.empty())
+       +++ (test.isCase? rx.Observable.return(Started(test, thisPath))
+                       : rx.Observable.empty())
+       +++ test.run(thisPath, config)
+       +++ (test.isCase? rx.Observable.return(Finished(test, thisPath))
+                       : rx.Observable.empty())
        +++ this.afterEach.run() }
 };
 
