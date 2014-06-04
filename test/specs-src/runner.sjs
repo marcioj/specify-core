@@ -101,9 +101,8 @@ module.exports = spec 'Runner' {
                 ,['f', 'C']]
         })}).fork(noop, noop)
     }
-  }
 
-  it 'Should pass the report to the reporter.' {
+    it 'Should pass the report to the reporter.' {
       hifive.run(cfg, [s2, s3], function(_, reportStream) {
         reportStream.subscribe(function(report) {
           report.passed.map(λ[#.fullTitle()]) => ['B a', 'B A a'];
@@ -111,6 +110,6 @@ module.exports = spec 'Runner' {
           report.ignored.map(λ[#.fullTitle()]) => ['B A b', 'B b', 'C b'];
         })
       }).fork(noop, noop)
-
+    }
   }
 }
