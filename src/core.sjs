@@ -191,7 +191,7 @@ union Test {
  */
 Case::run = function(path, config) {
   var title   = path.concat([this.name]);
-  var enabled = (this.enabled <|> new Maybe.Just(config.runOnly)).get();
+  var enabled = (this.enabled <|> Maybe.Just(config.runOnly)).get();
 
   return enabled(this)?   rx.Observable.fromNodeCallback(toNode <| runTest(this))()
   :      /* otherwise */  rx.Observable.return(TestResult <| Ignored(title))
@@ -199,8 +199,8 @@ Case::run = function(path, config) {
 
   function runTest(testCase) {
     return new Future(function(_, resolve) {
-      var mSlow          = testCase.slow    <|> new Maybe.Just(config.slowThreshold);
-      var mTimeout       = testCase.timeout <|> new Maybe.Just(config.timeout);
+      var mSlow          = testCase.slow    <|> Maybe.Just(config.slowThreshold);
+      var mTimeout       = testCase.timeout <|> Maybe.Just(config.timeout);
       var started        = new Date();
       var releaseConsole = captureLogs();
 
