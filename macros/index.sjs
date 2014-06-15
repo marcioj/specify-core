@@ -33,7 +33,7 @@ macro $hifive__definition {
       enabled: new $scope.hifive._Maybe.Nothing(),
       test: new $scope.hifive._Future(function(reject, resolve) {
         try {
-          $a ...;
+          (function(){ $a ... }());
           resolve();
         } catch (e) {
           reject(e);

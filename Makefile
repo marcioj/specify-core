@@ -65,12 +65,12 @@ documentation: $(TGT)
 	$(jsdoc) --configure jsdoc.conf.json
 
 clean:
-	rm -rf dist build $(LIB_DIR)
+	rm -rf dist build $(TGT) $(TEST_TGT)
 
 test: $(TGT) $(TEST_TGT)
 	node test/run
 
-package: documentation bundle minify
+package: $(TGT) $(TEST_TGT) documentation bundle minify
 	mkdir -p dist/$(PACKAGE)-$(VERSION)
 	cp -r docs dist/$(PACKAGE)-$(VERSION)
 	cp -r lib dist/$(PACKAGE)-$(VERSION)
@@ -80,7 +80,7 @@ package: documentation bundle minify
 	cp LICENCE dist/$(PACKAGE)-$(VERSION)
 	cd dist && tar -czf $(PACKAGE)-$(VERSION).tar.gz $(PACKAGE)-$(VERSION)
 
-publish: clean
+publish: clean test
 	npm install
 	npm publish
 

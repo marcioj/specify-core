@@ -1,4 +1,4 @@
-// Copyright (c) 2013-2014 Quildreen Motta <quildreen@gmail.com>
+// Copyright (c) 2014 Quildreen Motta <quildreen@gmail.com>
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation files
@@ -19,10 +19,10 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-module.exports = [
-  require('./core')
-, require('./runner')
-, require('./report')
-, require('./result')
-, require('./macros')
-]
+var Future = require('data.future')
+
+module.exports = spec 'Macros' {
+  it 'Should ignore returns' {
+    return new Future(function(){ })
+  }
+}
