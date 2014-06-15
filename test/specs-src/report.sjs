@@ -48,8 +48,8 @@ module.exports = spec 'Report' {
 
     it 'Given a `Success`, should add to .passed.' {
       var r1 = hifive.Report.empty();
-      var s1 = Object.create(hifive.Result.Success.prototype)
-      var r2 = r1.add(s1)
+      var s1 = Object.create(hifive.Result.Success.prototype);
+      var r2 = r1.add(s1);
 
       r2.passed => [s1];
       r2.failed => [];
@@ -58,8 +58,8 @@ module.exports = spec 'Report' {
 
     it 'Given a `Failure`, should add to .failed.' {
       var r1 = hifive.Report.empty();
-      var f1 = Object.create(hifive.Result.Failure.prototype)
-      var r2 = r1.add(f1)
+      var f1 = Object.create(hifive.Result.Failure.prototype);
+      var r2 = r1.add(f1);
 
       r2.passed => [];
       r2.failed => [f1];
@@ -68,8 +68,8 @@ module.exports = spec 'Report' {
 
     it 'Given an `Ignored`, should add to .ignored.' {
       var r1 = hifive.Report.empty();
-      var i1 = Object.create(hifive.Result.Ignored.prototype)
-      var r2 = r1.add(i1)
+      var i1 = Object.create(hifive.Result.Ignored.prototype);
+      var r2 = r1.add(i1);
 
       r2.passed => [];
       r2.failed => [];
