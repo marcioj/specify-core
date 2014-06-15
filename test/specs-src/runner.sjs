@@ -66,7 +66,7 @@ function noop(){}
 module.exports = spec 'Runner' {
   spec 'run()' {
     it 'Should return a report with the results of the tests.' {
-      hifive.run(cfg, [s2, s3], noop)
+      hifive.makeRunner(cfg, [s2, s3], noop)
             .fork(noop, function(report) {
               report.passed.map(λ[#.fullTitle()]) => ['B a', 'B A a'];
               report.failed.map(λ[#.fullTitle()]) => ['B A c'];
@@ -75,7 +75,7 @@ module.exports = spec 'Runner' {
     }
 
     it 'Should pass the stream of things to the reporter.' {
-      hifive.run(cfg, [s2, s3], function(xs) {
+      hifive.makeRunner(cfg, [s2, s3], function(xs) {
         xs.reduce(function(acc, x) {
           return x.cata({
             Started: λ(_) -> acc.concat([['s', x.fullTitle()]]),
@@ -103,7 +103,7 @@ module.exports = spec 'Runner' {
     }
 
     it 'Should pass the report to the reporter.' {
-      hifive.run(cfg, [s2, s3], function(_, reportStream) {
+      hifive.makeRunner(cfg, [s2, s3], function(_, reportStream) {
         reportStream.subscribe(function(report) {
           report.passed.map(λ[#.fullTitle()]) => ['B a', 'B A a'];
           report.failed.map(λ[#.fullTitle()]) => ['B A c'];

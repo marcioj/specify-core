@@ -81,7 +81,7 @@ var defaultConfig = Config.create({
 // -- Core functionality -----------------------------------------------
 
 /**
- * Runs a series of test cases.
+ * Constructs a task for running all tests.
  *
  * @static
  * @method
@@ -91,8 +91,8 @@ var defaultConfig = Config.create({
  * → (Rx.Observable[α, Signal], Rx.Observable[α, Report] → Void)
  * → Future[Error, Report]
  */
-run = curry(3, run)
-function run(config, suites, reporter) { return new Future(function(reject, resolve) {
+makeRunner = curry(3, makeRunner)
+function makeRunner(config, suites, reporter) { return new Future(function(reject, resolve) {
   var stream = suites.map(λ[#.run([], config)])
                      .reduce(λ[# +++ #], rx.Observable.empty())
                      .publish();
@@ -106,10 +106,33 @@ function run(config, suites, reporter) { return new Future(function(reject, reso
   stream.connect();
 })}
 
+/**
+ * Runs a series of test cases.
+ *
+ * @static
+ * @method
+ * @summary
+ * Config → [Test] → (Rx.Observable[α, Signal], Rx.Observable[α, Report] → Void) → Void
+ */
+run = curry(3, run)
+function run(config, suites, reporter) {
+  makeRunner(config, suites, reporter).fork(
+    function(e){ throw e }
+  , function(report) {
+      if (report.failed.length)  exit(1)
+      if (!report.all().length)  exit(1)
+      else                       exit(0)
+  })
+
+  function exit(status) {
+    if (typeof process != 'undefined' && process.exit)  process.exit(status) }
+}
+ 
 
 // -- Exports ----------------------------------------------------------
 module.exports = { run             : run
                  , runWithDefaults : run(defaultConfig)
+                 , makeRunner      : makeRunner
                  , Config          : Config
                  , defaultConfig   : defaultConfig
                  }
