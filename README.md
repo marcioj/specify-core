@@ -29,24 +29,42 @@ Minimal BDD test runner that plays along nicely with Browserify.
 ## Example
 
 ```js
-var spec   = require('hifive')()
-var assert = require('assert')
+// test.sjs
+var assert = require('assert');
 
-spec('λ compose', function(it) {
-  it('compose(f, g)(x) should be the same as f(g(x))', function() {
-    assert.strictEqual(f(g(x)), compose(f, g)(x))
-  })
-})
+var suite = spec 'λ compose' {
+  it 'compose(f, g)(x) should be the same as f(g(x))' {
+    assert.strictEqual(f(g(x)), compose(f, g)(x));
+  }
+}
 
-spec.run(require('hifive-minimal')())
+var hifive   = require('hifive');
+var reporter = require('hifive-spec')();
+hifive.runWithDefaults([suite], reporter);
 ```
 
-Then:
+Compile the file with Sweet.js:
 
 ```bash
-$ node run test.js
-Success. 1/1 tests.
+$ npm install sweet.js
+$ $(npm bin)/sjs --module hifive/macros --output test.js test.sjs
 ```
+
+Then run the file:
+
+```bash
+$ node test.js
+λ compose
+  ✓ compose(f, g)(x) should be the same as f(g(x))
+
+Ran 1 tests (8ms)
+1 test passed.
+```
+
+If you don't want to use the Sweet.js macros, you can use the
+[BDD interface](https://github.com/hifivejs/hifive-bdd) fully in JavaScript, or
+write your own interface.
+
 
 ## Installing
 
