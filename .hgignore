@@ -3,7 +3,8 @@ syntax: glob
 node_modules
 dist
 npm-debug.log
-docs
+docs/api
+docs/manual/build
 lib
 test/specs
 
