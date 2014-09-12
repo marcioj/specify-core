@@ -5,6 +5,7 @@ Hi-Five
 [![Dependencies Status](https://david-dm.org/hifivejs/hifive.png)](https://david-dm.org/hifivejs/hifive)
 [![NPM version](https://badge.fury.io/js/hifive.png)](http://badge.fury.io/js/hifive)
 [![unstable](http://hughsk.github.io/stability-badges/dist/unstable.svg)](http://github.com/hughsk/stability-badges)
+[![Documentation Status](https://readthedocs.org/projects/hifive/badge/?version=latest)](https://readthedocs.org/projects/hifive/?badge=latest)
 
 [![browser support](http://ci.testling.com/hifivejs/hifive.png)](http://ci.testling.com/hifivejs/hifive)
 
