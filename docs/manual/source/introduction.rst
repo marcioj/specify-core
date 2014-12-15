@@ -13,7 +13,7 @@ Why use Hi-Five?
 Since JavaScript isn't a particularly well suited language for guaranteeing the
 quality of programs written in it, programmers need to rely on external
 analysis and assurance tools for that. One particularly well used tool is
-automatic testing.
+automated testing.
 
 Hi-Five provides a library designed towards the Behaviour-Driven Development
 methodology to software testing, that can fit any environment and

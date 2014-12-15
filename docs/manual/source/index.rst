@@ -28,3 +28,4 @@ Table of Contents
 
    introduction.rst
    quickstart.rst
+   extending.rst

@@ -263,3 +263,7 @@ texinfo_documents = [
 #texinfo_no_detailmenu = False
 
 highlight_language = 'javascript'
+rst_prolog = """
+.. highlight:: js
+   :linenothreshold: 2
+"""
