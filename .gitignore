@@ -1,5 +1,8 @@
 *.orig
-node_modules
-dist
+node_modules/
+dist/
 npm-debug.log
-docs/manual/build
+docs/manual/build/
+docs/api/
+test/specs/
+lib/
