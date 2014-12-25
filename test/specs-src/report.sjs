@@ -1,5 +1,5 @@
 var Future  = require('data.future')
-var delay   = require('control.async').delay
+var delay   = require('control.async')(Future).delay
 var alright = require('alright');
 var specify  = require('specify-core');
 var _       = alright;

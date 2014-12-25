@@ -1,7 +1,7 @@
 var alright = require('alright')
 var specify  = require('specify-core')
 var Future  = require('data.future')
-var fail    = require('control.async').fail;
+var fail    = Future.rejected;
 var Maybe   = require('data.maybe');
 
 var _       = alright;

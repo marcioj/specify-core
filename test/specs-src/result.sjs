@@ -10,7 +10,7 @@ var t      = claire.data
 
 var TDuration = t.Int.then(λ(x) -> flip(fmap)(t.Int, λ(y) ->
                   Duration( moment().toDate()
-                          , moment().add('ms', x).toDate()
+                          , moment().add(x, 'ms').toDate()
                           , y)))
 
 var TResultTag = claire.choice('Success', 'Failure', 'Ignored')
@@ -30,9 +30,9 @@ var Result   = specify.Result;
 module.exports = spec 'Result' {
   spec 'Duration#isSlow()' {
     it 'Should be true when the duration is greater than the slow threshold.' {
-      Duration(moment().toDate(), moment().add('ms', 100).toDate(), 150).isSlow() => false;
-      Duration(moment().toDate(), moment().add('ms', 150).toDate(), 150).isSlow() => true;
-      Duration(moment().toDate(), moment().add('ms', 200).toDate(), 150).isSlow() => true
+      Duration(moment().toDate(), moment().add(100, 'ms').toDate(), 150).isSlow() => false;
+      Duration(moment().toDate(), moment().add(150, 'ms').toDate(), 150).isSlow() => true;
+      Duration(moment().toDate(), moment().add(200, 'ms').toDate(), 150).isSlow() => true
     }
   }
 
