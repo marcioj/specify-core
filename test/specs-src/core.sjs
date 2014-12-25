@@ -1,30 +1,9 @@
-// Copyright (c) 2013-2014 Quildreen Motta <quildreen@gmail.com>
-//
-// Permission is hereby granted, free of charge, to any person
-// obtaining a copy of this software and associated documentation files
-// (the "Software"), to deal in the Software without restriction,
-// including without limitation the rights to use, copy, modify, merge,
-// publish, distribute, sublicense, and/or sell copies of the Software,
-// and to permit persons to whom the Software is furnished to do so,
-// subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be
-// included in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 var Future  = require('data.future');
 var fail    = require('control.async').fail;
 var delay   = require('control.async').delay;
 var Maybe   = require('data.maybe');
 var alright = require('alright');
-var hifive  = require('hifive');
+var specify = require('specify-core');
 var AssertionError = require('assertion-error');
 
 var _       = alright;
@@ -33,12 +12,12 @@ var Just    = Maybe.Just;
 
 function noop(){}
 
-var cfg = hifive.Config(100, 100, λ(x) -> true);
-var cfgDisabled = hifive.Config(100, 100, λ(x) -> false);
+var cfg = specify.Config(100, 100, λ(x) -> true);
+var cfgDisabled = specify.Config(100, 100, λ(x) -> false);
 
 function Test(x) {
   x = x || {};
-  return hifive.Test.Case.create({
+  return specify.Test.Case.create({
     name: x.name || '',
     test: x.test || Future.of(),
     timeout: x.timeout || Nothing(),
@@ -48,13 +27,13 @@ function Test(x) {
 }
 function Suite(x) {
   x = x || {};
-  return hifive.Test.Suite.create({
+  return specify.Test.Suite.create({
     name: x.name || '',
     tests: x.tests || [],
-    beforeAll: x.beforeAll || hifive.Hook([]),
-    beforeEach: x.beforeEach || hifive.Hook([]),
-    afterAll: x.afterAll || hifive.Hook([]),
-    afterEach: x.afterEach || hifive.Hook([])
+    beforeAll: x.beforeAll || specify.Hook([]),
+    beforeEach: x.beforeEach || specify.Hook([]),
+    afterAll: x.afterAll || specify.Hook([]),
+    afterEach: x.afterEach || specify.Hook([])
   })
 }
 
@@ -70,7 +49,7 @@ module.exports = spec 'Core' {
       var result = new Future(function(_, resolve){ 
         var ax  = [];
         var add = λ(x) -> new Future(λ(_,f) -> f(x, ax.push(x)));
-        hifive.Hook([add(1), add(2), add(3)])
+        specify.Hook([add(1), add(2), add(3)])
               .run()
               .subscribe(noop, noop, function() {
                                        resolve(ax) })});
@@ -83,7 +62,7 @@ module.exports = spec 'Core' {
       var add = λ(x) -> x === 1? new Future(λ(f,_) -> f(x, ax.push(x)))
                                : new Future(λ(_,f) -> f(x, ax.push(x)))
 
-      hifive.Hook([add(0), add(1), add(2)])
+      specify.Hook([add(0), add(1), add(2)])
             .run()
             .subscribe(noop, function(e){ e => 1 });
 
@@ -163,13 +142,13 @@ module.exports = spec 'Core' {
         var h2 = delay(30).chain(λ(x) -> Future.of(ax.push('h2')));
         var s1 = Suite({ name: 'A'
                        , tests: [t1, t4, t3]
-                       , beforeEach: hifive.Hook([h2])
-                       , afterEach: hifive.Hook([h1])
+                       , beforeEach: specify.Hook([h2])
+                       , afterEach: specify.Hook([h1])
                        });
         var s2 = Suite({ name: 'B'
                        , tests: [t1, s1, t2]
-                       , beforeAll: hifive.Hook([h1, h2])
-                       , afterAll: hifive.Hook([h1, h1])
+                       , beforeAll: specify.Hook([h1, h2])
+                       , afterAll: specify.Hook([h1, h1])
                        });
 
         s2.run([], cfg)

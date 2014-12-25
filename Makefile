@@ -6,7 +6,7 @@ uglify     = $(bin)/uglifyjs
 VERSION    = $(shell node -e 'console.log(require("./package.json").version)')
 
 # -- Configuration -----------------------------------------------------
-PACKGE   = NAME
+PACKAGE  = NAME
 EXPORTS  = EXPORTS
 
 LIB_DIR  = lib
@@ -24,10 +24,10 @@ TEST_TGT = ${TEST_SRC:$(TEST_DIR)/%.sjs=$(TEST_BLD)/%.js}
 dist:
 	mkdir -p $@
 
-dist/$(PACKAGE).umd.js: $(LIB_DIR)/index.js dist
+dist/$$PACKAGE.umd.js: $(LIB_DIR)/index.js dist
 	$(browserify) $< --standalone $(EXPORTS) > $@
 
-dist/$(PACKAGE).umd.min.js: dist/$(PACKAGE).umd.js
+dist/$$PACKAGE.umd.min.js: dist/$(PACKAGE).umd.js
 	$(uglify) --mangle - < $< > $@
 
 $(LIB_DIR)/%.js: $(SRC_DIR)/%.sjs

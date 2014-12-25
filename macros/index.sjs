@@ -1,15 +1,15 @@
-macro $hifive__load {
+macro $specify_core__load {
   rule { } => {
-    typeof module !== 'undefined' && typeof require !== 'undefined'?  require('hifive')
-    :                                                                 window.hifive
+    typeof module !== 'undefined' && typeof require !== 'undefined'?  require('specify-core')
+    :                                                                 window.Specify.core
   }
 }
 
 macro spec {
   rule { $title { $a ... } } => {
-    (function(hifive) {
+    (function(specify) {
       var _scope = {
-        hifive     : hifive,
+        specify     : specify,
         tests      : [],
         beforeAll  : [],
         afterAll   : [],
@@ -17,21 +17,21 @@ macro spec {
         afterEach  : []
       };
 
-      $hifive__definition _scope { spec $title { $a ... }}
+      $specify__definition _scope { spec $title { $a ... }}
 
       return _scope.tests[0];
-    }($hifive__load))
+    }($specify_core__load))
   }
 }
 
-macro $hifive__definition {
+macro $specify__definition {
   rule { $scope { it $title { $a ... } $b ... } } => {
-    $scope.tests.push($scope.hifive.Test.Case.create({
+    $scope.tests.push($scope.specify.Test.Case.create({
       name: $title,
-      timeout: new $scope.hifive._Maybe.Nothing(),
-      slow: new $scope.hifive._Maybe.Nothing(),
-      enabled: new $scope.hifive._Maybe.Nothing(),
-      test: new $scope.hifive._Future(function(reject, resolve) {
+      timeout: new $scope.specify._Maybe.Nothing(),
+      slow: new $scope.specify._Maybe.Nothing(),
+      enabled: new $scope.specify._Maybe.Nothing(),
+      test: new $scope.specify._Future(function(reject, resolve) {
         try {
           (function(){ $a ... }());
           resolve();
@@ -41,42 +41,42 @@ macro $hifive__definition {
       })
     }));
 
-    $hifive__definition $scope { $b ... }
+    $specify__definition $scope { $b ... }
   }
 
   rule { $scope { xit $title { $a ... } $b ... }} => {
-    $hifive__definition $scope { it $title { $a ... } }
-    $scope.tests[$scope.tests.length - 1].enabled = new $scope.hifive._Maybe.Just(
+    $specify__definition $scope { it $title { $a ... } }
+    $scope.tests[$scope.tests.length - 1].enabled = new $scope.specify._Maybe.Just(
       function(){ return false }
     );
-    $hifive__definition $scope { $b ... }
+    $specify__definition $scope { $b ... }
   }
 
   rule { $scope { async $title { $test ... } $a ... } } => {
-    $scope.tests.push($scope.hifive.Test.Case.create({
+    $scope.tests.push($scope.specify.Test.Case.create({
       name: $title,
-      timeout: new $scope.hifive._Maybe.Nothing(),
-      slow: new $scope.hifive._Maybe.Nothing(),
-      enabled: new $scope.hifive._Maybe.Nothing(),
+      timeout: new $scope.specify._Maybe.Nothing(),
+      slow: new $scope.specify._Maybe.Nothing(),
+      enabled: new $scope.specify._Maybe.Nothing(),
       test: function(){ $test ... }()
     }));
 
 
-    $hifive__definition $scope { $a ... }
+    $specify__definition $scope { $a ... }
   }
 
   rule { $scope { xasync $title { $a ... } $b ... }} => {
-    $hifive__definition $scope { async $title { $a ... } }
-    $scope.tests[$scope.tests.length - 1].enabled = new $scope.hifive._Maybe.Just(
+    $specify__definition $scope { async $title { $a ... } }
+    $scope.tests[$scope.tests.length - 1].enabled = new $scope.specify._Maybe.Just(
       function(){ return false }
     );
-    $hifive__definition $scope { $b ... }
+    $specify__definition $scope { $b ... }
   }
 
   rule { $scope { spec $title { $a ... } $b ... } } => {
     (function() {
       var _scope = {
-        hifive     : $scope.hifive,
+        specify     : $scope.specify,
         tests      : [],
         beforeAll  : [],
         afterAll   : [],
@@ -84,19 +84,19 @@ macro $hifive__definition {
         afterEach  : []
       };
 
-      $hifive__definition _scope { $a ... }
+      $specify__definition _scope { $a ... }
       
-      $scope.tests.push($scope.hifive.Test.Suite.create({
+      $scope.tests.push($scope.specify.Test.Suite.create({
         name       : $title,
         tests      : _scope.tests,
-        beforeAll  : $scope.hifive.Hook(_scope.beforeAll),
-        beforeEach : $scope.hifive.Hook(_scope.beforeEach),
-        afterAll   : $scope.hifive.Hook(_scope.afterAll),
-        afterEach  : $scope.hifive.Hook(_scope.afterEach)
+        beforeAll  : $scope.specify.Hook(_scope.beforeAll),
+        beforeEach : $scope.specify.Hook(_scope.beforeEach),
+        afterAll   : $scope.specify.Hook(_scope.afterAll),
+        afterEach  : $scope.specify.Hook(_scope.afterEach)
       }));
     })();
 
-    $hifive__definition $scope { $b ... }
+    $specify__definition $scope { $b ... }
   }
 
   rule { $scope { beforeAll { $a ... } $b ... } } => {
@@ -104,7 +104,7 @@ macro $hifive__definition {
       $a ...
     }());
 
-    $hifive__definition $scope { $b ... }
+    $specify__definition $scope { $b ... }
   }
 
   rule { $scope { beforeEach { $a ... } $b ... } } => {
@@ -112,7 +112,7 @@ macro $hifive__definition {
       $a ...
     }());
 
-    $hifive__definition $scope { $b ... }
+    $specify__definition $scope { $b ... }
   }
   
   rule { $scope { afterAll { $a ... } $b ... } } => {
@@ -120,7 +120,7 @@ macro $hifive__definition {
       $a ...
     }());
 
-    $hifive__definition $scope { $b ... }
+    $specify__definition $scope { $b ... }
   }
 
   rule { $scope { afterEach { $a ... } $b ... } } => {
@@ -128,7 +128,7 @@ macro $hifive__definition {
       $a ...
     }());
 
-    $hifive__definition $scope { $b ... }
+    $specify__definition $scope { $b ... }
   }
 
 

@@ -1,26 +1,5 @@
-// Copyright (c) 2013-2014 Quildreen Motta <quildreen@gmail.com>
-//
-// Permission is hereby granted, free of charge, to any person
-// obtaining a copy of this software and associated documentation files
-// (the "Software"), to deal in the Software without restriction,
-// including without limitation the rights to use, copy, modify, merge,
-// publish, distribute, sublicense, and/or sell copies of the Software,
-// and to permit persons to whom the Software is furnished to do so,
-// subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be
-// included in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 var alright = require('alright')
-var hifive  = require('hifive')
+var specify  = require('specify-core')
 var Future  = require('data.future')
 var fail    = require('control.async').fail;
 var Maybe   = require('data.maybe');
@@ -29,12 +8,12 @@ var _       = alright;
 var Nothing = Maybe.Nothing;
 var Just    = Maybe.Just;
 
-var cfg = hifive.Config(100, 100, λ(x) -> true);
-var cfgDisabled = hifive.Config(100, 100, λ(x) -> false);
+var cfg = specify.Config(100, 100, λ(x) -> true);
+var cfgDisabled = specify.Config(100, 100, λ(x) -> false);
 
 function Test(x) {
   x = x || {};
-  return hifive.Test.Case.create({
+  return specify.Test.Case.create({
     name: x.name || '',
     test: x.test || Future.of(),
     timeout: x.timeout || Nothing(),
@@ -44,13 +23,13 @@ function Test(x) {
 }
 function Suite(x) {
   x = x || {};
-  return hifive.Test.Suite.create({
+  return specify.Test.Suite.create({
     name: x.name || '',
     tests: x.tests || [],
-    beforeAll: x.beforeAll || hifive.Hook([]),
-    beforeEach: x.beforeEach || hifive.Hook([]),
-    afterAll: x.afterAll || hifive.Hook([]),
-    afterEach: x.afterEach || hifive.Hook([])
+    beforeAll: x.beforeAll || specify.Hook([]),
+    beforeEach: x.beforeEach || specify.Hook([]),
+    afterAll: x.afterAll || specify.Hook([]),
+    afterEach: x.afterEach || specify.Hook([])
   })
 }
 
@@ -66,7 +45,7 @@ function noop(){}
 module.exports = spec 'Runner' {
   spec 'run()' {
     it 'Should return a report with the results of the tests.' {
-      hifive.makeRunner(cfg, [s2, s3], noop)
+      specify.makeRunner(cfg, [s2, s3], noop)
             .fork(noop, function(report) {
               report.passed.map(λ[#.fullTitle()]) => ['B a', 'B A a'];
               report.failed.map(λ[#.fullTitle()]) => ['B A c'];
@@ -75,7 +54,7 @@ module.exports = spec 'Runner' {
     }
 
     it 'Should pass the stream of things to the reporter.' {
-      hifive.makeRunner(cfg, [s2, s3], function(xs) {
+      specify.makeRunner(cfg, [s2, s3], function(xs) {
         xs.reduce(function(acc, x) {
           return x.cata({
             Started: λ(_) -> acc.concat([['s', x.fullTitle()]]),
@@ -103,7 +82,7 @@ module.exports = spec 'Runner' {
     }
 
     it 'Should pass the report to the reporter.' {
-      hifive.makeRunner(cfg, [s2, s3], function(_, reportStream) {
+      specify.makeRunner(cfg, [s2, s3], function(_, reportStream) {
         reportStream.subscribe(function(report) {
           report.passed.map(λ[#.fullTitle()]) => ['B a', 'B A a'];
           report.failed.map(λ[#.fullTitle()]) => ['B A c'];
