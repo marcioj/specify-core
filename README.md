@@ -5,7 +5,7 @@ specify-core
 [![NPM version](https://img.shields.io/npm/v/specify-core.svg?style=flat)](https://npmjs.org/package/specify-core)
 [![Dependencies status](https://img.shields.io/david/origamitower/specify-core.svg?style=flat)](https://david-dm.org/origamitower/specify-core)
 ![Licence](https://img.shields.io/npm/l/specify-core.svg?style=flat&label=licence)
-![Experimental](https://img.shields.io/badge/API_stability-stable-green.svg?style=flat)
+![Stable API](https://img.shields.io/badge/API_stability-stable-green.svg?style=flat)
 
 This module provides the basic functionality for describing, structuring, and
 running tests in [Specify][]. A DSL for Sweet.js and an EDSL for plain
