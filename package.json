@@ -1,6 +1,6 @@
 {
   "name": "specify-core",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0",
   "description": "Describe, structure and runs tests for the Specify framework.",
   "main": "./lib/index.js",
   "scripts": {
